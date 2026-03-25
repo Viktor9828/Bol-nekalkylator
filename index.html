@@ -11,7 +11,7 @@
   --bg:#1a1a1a;--surface:#242424;--surface2:#2e2e2e;--surface3:#1e1e1e;
   --border:rgba(255,255,255,0.13);--border-soft:rgba(255,255,255,0.07);
   --txt:#e8e8e8;--txt2:#999;
-  --green:#1D9E75;--red:#D85A30;--blue:#4a85d4;--purple:#9d97e8;--gray:#777;
+  --green:#1D9E75;--red:#D85A30;--blue:#4a85d4;--purple:#9d97e8;--gray:#666;
   --radius:12px;--radius-sm:8px;
 }
 body.light{
@@ -19,7 +19,7 @@ body.light{
   --border:rgba(0,0,0,0.12);--border-soft:rgba(0,0,0,0.07);
   --txt:#1a1a1a;--txt2:#666;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--txt);padding:1.25rem 1rem 3rem;max-width:980px;margin:0 auto;transition:background .2s,color .2s;font-size:15px;line-height:1.5}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--txt);padding:1.25rem 1rem 3rem;max-width:980px;margin:0 auto;font-size:15px;line-height:1.5}
 h1{font-size:20px;font-weight:500;margin-bottom:4px}
 .subtitle{font-size:13px;color:var(--txt2)}
 .topbar{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px}
@@ -39,24 +39,34 @@ button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 .card{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius);padding:16px 18px}
 .card-title{font-size:11px;font-weight:500;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
 .grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.grid-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px 14px}
 .flex-col{display:flex;flex-direction:column;gap:14px}
 .field label{font-size:13px;color:var(--txt2);display:block;margin-bottom:4px}
 .field-with-unit{position:relative}
 .field-with-unit input{padding-right:36px}
 .field-unit{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--txt2);pointer-events:none}
 .field-row{display:flex;align-items:center;gap:6px}
-.field-row label{font-size:13px;color:var(--txt2);flex:1}
 .help-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--surface2);border:0.5px solid var(--border);font-size:10px;color:var(--txt2);cursor:default;flex-shrink:0;position:relative}
 .tooltip-wrap{position:relative;display:inline-flex;align-items:center}
-.tooltip-wrap .tip{display:none;position:absolute;left:22px;top:50%;transform:translateY(-50%);background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;color:var(--txt);line-height:1.5;width:220px;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.tooltip-wrap .tip{display:none;position:absolute;left:22px;top:50%;transform:translateY(-50%);background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;color:var(--txt);line-height:1.5;width:220px;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,.4)}
 .tooltip-wrap:hover .tip,.tooltip-wrap:focus-within .tip{display:block}
 .slider-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
 .slider-row label{font-size:13px;color:var(--txt2)}
 .slider-row span{font-size:14px;font-weight:500;white-space:nowrap;margin-left:8px}
 .slider-range{display:flex;justify-content:space-between;font-size:11px;color:var(--txt2);margin-top:2px}
-.note{font-size:11px;color:var(--txt2);margin-top:6px;line-height:1.5}
-.rb-grid{display:grid;gap:12px}
+.note{font-size:11px;color:var(--txt2);line-height:1.5}
+.note-top{margin-top:6px}
+
+/* Rate table */
+.rate-table{width:100%;border-collapse:collapse;font-size:13px}
+.rate-table th{text-align:left;font-size:11px;font-weight:500;color:var(--txt2);padding:0 0 8px;border-bottom:0.5px solid var(--border-soft)}
+.rate-table th:last-child{text-align:right}
+.rate-group-label{font-size:10px;font-weight:500;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;padding:10px 0 4px;display:block}
+.rate-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:6px}
+.rate-cell{display:flex;flex-direction:column;gap:3px}
+.rate-cell label{font-size:11px;color:var(--txt2)}
+
+/* Result blocks */
+.rb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
 .result-block{background:var(--surface2);border:0.5px solid var(--border-soft);border-radius:var(--radius-sm);padding:14px 16px}
 .rb-title{font-size:12px;font-weight:500;color:var(--txt2);margin-bottom:10px}
 .rb-cols{display:grid;gap:8px}
@@ -64,19 +74,19 @@ button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 .rb-cell .rb-lbl{font-size:11px;color:var(--txt2);margin-bottom:3px}
 .rb-cell .rb-val{font-size:14px;font-weight:500}
 .verdict{border-radius:var(--radius-sm);padding:16px 18px;margin-bottom:10px}
-.verdict p{font-size:14px;font-weight:500}
+.verdict-text{font-size:14px;font-weight:500}
 .verdict-note{font-size:12px;color:var(--txt2);margin-top:5px}
 .cross-note{border-radius:var(--radius-sm);padding:10px 16px;background:var(--surface2);border:0.5px solid var(--border-soft);font-size:12px;color:var(--txt2);margin-bottom:24px}
 .period-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:16px}
-.chart-explainer{background:var(--surface2);border:0.5px solid var(--border-soft);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:12px;font-size:12px;color:var(--txt2);line-height:1.6}
+.chart-explainer{background:var(--surface2);border:0.5px solid var(--border-soft);border-radius:var(--radius-sm);padding:11px 14px;margin-bottom:10px;font-size:12px;color:var(--txt2);line-height:1.6}
 .chart-explainer strong{color:var(--txt);font-weight:500}
 .chart-container{position:relative;height:240px}
-.chart-footer{font-size:11px;color:var(--txt2);margin-top:10px;line-height:1.5}
-.legend-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px}
+.chart-footer{font-size:11px;color:var(--txt2);margin-top:8px;line-height:1.5}
+.legend-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px}
 .legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--txt2)}
-.legend-dot{width:24px;height:3px;border-radius:2px;flex-shrink:0}
-.legend-dot.dashed{background:repeating-linear-gradient(90deg,currentColor 0,currentColor 5px,transparent 5px,transparent 9px)}
+.legend-line{width:22px;height:3px;border-radius:2px;flex-shrink:0}
+.be-badge{display:inline-block;background:rgba(157,151,232,0.15);color:var(--purple);border:0.5px solid var(--purple);border-radius:4px;font-size:11px;padding:1px 6px;margin-left:4px}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
 th{text-align:right;padding:7px 10px;font-weight:500;color:var(--txt2);white-space:nowrap;font-size:12px;border-bottom:1px solid var(--border)}
 td{padding:7px 10px;text-align:right;color:var(--txt2);border-bottom:0.5px solid var(--border-soft)}
@@ -84,12 +94,12 @@ td.yr{font-weight:500;color:var(--txt)}
 td.net-pos{font-weight:500;color:var(--green)}
 td.net-neg{font-weight:500;color:var(--red)}
 tr.milestone td.yr{color:var(--purple)}
-tr.milestone{background:rgba(157,151,232,0.08)}
+tr.milestone{background:rgba(157,151,232,0.07)}
 tr.stripe{background:var(--surface2)}
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .cross-legend{font-size:11px;color:var(--purple);margin-top:10px}
 .mb-12{margin-bottom:12px}.mb-16{margin-bottom:16px}.mb-24{margin-bottom:24px}
-.be-badge{display:inline-block;background:rgba(157,151,232,0.15);color:var(--purple);border:0.5px solid var(--purple);border-radius:4px;font-size:11px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.housing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px 14px}
 </style>
 </head>
 <body>
@@ -114,7 +124,6 @@ tr.stripe{background:var(--surface2)}
   </div>
 </div>
 
-<!-- INDATA -->
 <div class="sec-hd mb-12">
   <div class="sec-bar" style="background:var(--blue)"></div>
   <p id="ui-inputSection">Indata</p>
@@ -122,23 +131,24 @@ tr.stripe{background:var(--surface2)}
 
 <div class="grid-auto mb-24">
 
+  <!-- Bostad & lån -->
   <div class="card">
     <p class="card-title" id="ui-property">Bostad &amp; lån</p>
     <div class="flex-col">
       <div class="field">
         <label id="ui-propertyPrice">Bostadens pris (SEK)</label>
-        <input type="number" id="pris" value="4000000" step="50000" oninput="fmtInput(this);update()"/>
+        <input type="number" id="pris" value="4000000" step="50000" oninput="update()"/>
       </div>
-      <div class="grid-fields">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 14px">
         <div class="field">
-          <label id="ui-amort15">Amortering 15%-scen.</label>
+          <label id="ui-amort15">Amortering 15%</label>
           <div class="field-with-unit">
             <input type="number" id="amort15" value="1" step="0.5" min="0" max="10" oninput="update()"/>
             <span class="field-unit">%/år</span>
           </div>
         </div>
         <div class="field">
-          <label id="ui-amort10">Amortering 10%-scen.</label>
+          <label id="ui-amort10">Amortering 10%</label>
           <div class="field-with-unit">
             <input type="number" id="amort10" value="2" step="0.5" min="0" max="10" oninput="update()"/>
             <span class="field-unit">%/år</span>
@@ -152,22 +162,25 @@ tr.stripe{background:var(--surface2)}
         </div>
         <input type="range" id="ranteavdrag" min="0" max="30" step="1" value="30" oninput="syncSlider('ranteavdrag','%');update()"/>
         <div class="slider-range"><span>0%</span><span>30%</span></div>
-        <p class="note" id="ui-rateDeductionNote">Gällande: 30% avdrag på räntekostnader upp till 100 000 kr/år. Sänk för att simulera framtida regeländring.</p>
+        <p class="note note-top" id="ui-rateDeductionNote">Gällande: 30% avdrag på räntekostnader upp till 100 000 kr/år.</p>
       </div>
     </div>
   </div>
 
+  <!-- Bolåneränta -->
   <div class="card">
     <p class="card-title" id="ui-rates">Bolåneränta per period</p>
-    <div class="grid-fields" id="rate-fields"></div>
-    <p class="note mt-8" id="ui-ratesNote">Räntan för år N gäller t.o.m. nästa angivna år.</p>
+    <div id="rate-fields"></div>
+    <p class="note note-top" id="ui-ratesNote">Räntan för år N gäller t.o.m. nästa angivna år.</p>
   </div>
 
+  <!-- Boendekostnader -->
   <div class="card">
     <p class="card-title" id="ui-housingCosts">Boendekostnader / mån</p>
-    <div class="flex-col" id="housing-fields"></div>
+    <div class="housing-grid" id="housing-fields"></div>
   </div>
 
+  <!-- ISK & analys -->
   <div class="card">
     <p class="card-title" id="ui-investment">ISK &amp; analys</p>
     <div class="flex-col">
@@ -186,7 +199,7 @@ tr.stripe{background:var(--surface2)}
         </div>
         <input type="range" id="slr" min="0" max="8" step="0.1" value="2.6" oninput="syncSlider('slr','%');update()"/>
         <div class="slider-range"><span>0%</span><span>8%</span></div>
-        <p class="note" id="ui-slrNote">Aktuell SLR: 2.62%. ISK-skatt = SLR + 1% (min 1,25%) av portföljvärdet per år – ingen skatt vid försäljning.</p>
+        <p class="note note-top" id="ui-slrNote">Aktuell SLR: 2.62%. ISK-skatt = SLR+1% (min 1,25%) av portföljvärdet/år.</p>
       </div>
       <div>
         <label style="font-size:13px;color:var(--txt2);display:block;margin-bottom:6px" id="ui-analysPeriod">Analysperiod (år)</label>
@@ -202,143 +215,121 @@ tr.stripe{background:var(--surface2)}
   <p id="ui-resultSection">Resultat – år 10</p>
 </div>
 
-<div class="rb-grid grid-auto mb-16" id="result-blocks"></div>
+<div class="rb-grid mb-16" id="result-blocks"></div>
 
 <div class="verdict mb-16" id="verdict-box">
-  <p id="verdict-text"></p>
+  <p class="verdict-text" id="verdict-text"></p>
   <p class="verdict-note" id="verdict-note"></p>
 </div>
-<div class="cross-note" id="cross-note"></div>
+<div class="cross-note mb-24" id="cross-note"></div>
 
 <!-- GRAFER -->
 <div class="charts-grid">
   <div class="card">
     <p class="card-title" id="ui-chartMonthlyTitle">Månadskostnad över tid</p>
-    <div class="chart-explainer" id="monthly-explainer">
-      <strong>Vad visar denna graf?</strong> De två linjerna visar din totala månadskostnad (ränta + amortering + boendekostnader) för varje scenario. <strong>Blå = 15% insats</strong> (lägre lån), <strong>orange = 10% insats</strong> (högre lån). Orange startar högre men sjunker snabbare om amorteringen är högre.
-    </div>
+    <div class="chart-explainer" id="monthly-explainer"></div>
     <div class="legend-row" id="monthly-legend"></div>
     <div class="chart-container"><canvas id="chartMonthly"></canvas></div>
   </div>
   <div class="card">
     <p class="card-title" id="ui-chartPortTitle">Lönar sig 10%-scenariot?</p>
-    <div class="chart-explainer" id="port-explainer">
-      <strong>Vad visar denna graf?</strong> De 5% du <em>inte</em> lade in som kontantinsats investeras istället på börsen (ISK). <strong>Grön linje = ISK-portföljens värde</strong>. <strong>Grå streckad = den extra skulden</strong> du har i 10%-scenariot. När grön passerar grå har börsen tjänat ihop mer än vad skulden kostar – det är <strong>break-even</strong>. Den lila linjen visar nettofördelen (grön minus grå).
-    </div>
+    <div class="chart-explainer" id="port-explainer"></div>
     <div class="legend-row" id="port-legend"></div>
     <div class="chart-container"><canvas id="chartPort"></canvas></div>
-    <div class="chart-footer" id="port-footer"></div>
+    <p class="chart-footer" id="port-footer"></p>
   </div>
 </div>
 
 <!-- TABELL -->
-<div class="card">
+<div class="card" style="margin-top:16px">
   <p class="card-title" id="ui-tableTitle">Detaljerad tabell</p>
   <p class="note mb-12" id="ui-tableNote">Åren 1–10 visas varje år, därefter vart 5:e år.</p>
   <div class="table-wrap">
-    <table>
-      <thead><tr id="table-head"></tr></thead>
-      <tbody id="table-body"></tbody>
-    </table>
+    <table><thead><tr id="table-head"></tr></thead><tbody id="table-body"></tbody></table>
   </div>
   <p class="cross-legend" id="cross-legend"></p>
 </div>
 
 <script>
 const SLR_CURRENT = 2.62;
-const arKeys = [1,2,3,4,5,10,15,20,25,30,35,40,45,50];
+// Two groups: yearly 1-5, then 5-year intervals 10-50
+const arKeysEarly = [1,2,3,4,5];
+const arKeysLate  = [10,15,20,25,30,35,40,45,50];
+const arKeys = [...arKeysEarly,...arKeysLate];
 const analysOptions = [5,10,15,20,25,30,35,40,45,50];
-let analysAr = 10, lang = "sv", currency = "SEK", darkMode = true;
-let chartMonthly = null, chartPort = null;
+let analysAr=10, lang="sv", currency="SEK", darkMode=true;
+let chartMonthly=null, chartPort=null;
 
-const CURRENCIES = {
+const CURRENCIES={
   SEK:{symbol:"kr",locale:"sv-SE",pos:"after"},
   EUR:{symbol:"€",locale:"de-DE",pos:"before"},
   USD:{symbol:"$",locale:"en-US",pos:"before"},
   GBP:{symbol:"£",locale:"en-GB",pos:"before"},
 };
-
-const HOUSING_TIPS = {
-  sv:{
-    avgift:"Månadsavgift till bostadsrättsföreningen (BRF). Täcker vanligtvis värme, vatten, sophantering och föreningens gemensamma kostnader.",
-    drift:"El, uppvärmning, vatten/avlopp och bredband. Typiskt 1 500–3 000 kr/mån för en lägenhet.",
-    underhall:"Löpande underhåll och reparationer – t.ex. vitvaror, målning, mindre renoveringar. Räkna med 0,5–1% av bostadens värde per år.",
-    forsakring:"Hemförsäkring täcker stöld, brand och vattenskador. Ofta 200–500 kr/mån beroende på storlek och försäkringsbolag.",
-    ovrig:"Övriga kostnader som inte passar i de andra kategorierna – t.ex. p-plats, extra förråd eller TV/streaming-paket."
-  },
-  en:{
-    avgift:"Monthly fee to the housing association (HOA). Typically covers heating, water, waste management and shared costs.",
-    drift:"Electricity, heating, water/sewage and broadband. Typically 1 500–3 000 SEK/month for an apartment.",
-    underhall:"Ongoing maintenance and repairs – e.g. appliances, painting, minor renovations. Budget 0.5–1% of property value per year.",
-    forsakring:"Home insurance covering theft, fire and water damage. Often 200–500 SEK/month depending on size and insurer.",
-    ovrig:"Other costs that don't fit the other categories – e.g. parking, extra storage or TV/streaming subscriptions."
-  }
+const HOUSING_TIPS={
+  sv:{avgift:"Månadsavgift till bostadsrättsföreningen. Täcker vanligtvis värme, vatten, sophantering och gemensamma kostnader.",drift:"El, uppvärmning, vatten/avlopp och bredband. Typiskt 1 500–3 000 kr/mån.",underhall:"Löpande underhåll och reparationer. Räkna med 0,5–1% av bostadens värde per år.",forsakring:"Hemförsäkring täcker stöld, brand och vattenskador. Ofta 200–500 kr/mån.",ovrig:"Övriga kostnader – t.ex. parkering, förråd eller streaming."},
+  en:{avgift:"Monthly HOA fee covering heating, water, waste and shared costs.",drift:"Electricity, heating, water and broadband. Typically 1 500–3 000 SEK/month.",underhall:"Ongoing maintenance and repairs. Budget 0.5–1% of property value per year.",forsakring:"Home insurance covering theft, fire and water damage.",ovrig:"Other costs – e.g. parking, storage or streaming subscriptions."},
 };
-
-const LANGS = {
+const LANGS={
   sv:{
-    title:"Bolånekalkylator",subtitle:"Jämför 10% vs 15% kontantinsats",
-    inputSection:"Indata",resultSection:"Resultat",
-    property:"Bostad & lån",propertyPrice:"Bostadens pris",amort15:"Amortering 15%-scen.",amort10:"Amortering 10%-scen.",
-    rateDeduction:"Ränteavdrag",rateDeductionNote:"Gällande: 30% avdrag på räntekostnader upp till 100 000 kr/år. Sänk för att simulera framtida regeländring.",
+    title:"Bolånekalkylator",subtitle:"Jämför 10% vs 15% kontantinsats",inputSection:"Indata",resultSection:"Resultat",
+    property:"Bostad & lån",propertyPrice:"Bostadens pris",amort15:"Amortering 15%",amort10:"Amortering 10%",
+    rateDeduction:"Ränteavdrag",rateDeductionNote:"Gällande: 30% avdrag på räntekostnader upp till 100 000 kr/år.",
     rates:"Bolåneränta per period",ratesNote:"Räntan för år N gäller t.o.m. nästa angivna år.",
-    housingCosts:"Boendekostnader / mån",
-    brf:"Månadsavgift (BRF)",utilities:"Driftkostnader",maintenance:"Underhåll",insurance:"Hemförsäkring",other:"Övriga kostnader",
+    ratesEarly:"År 1–5",ratesLate:"År 10–50 (vart 5:e år)",
+    housingCosts:"Boendekostnader / mån",brf:"Månadsavgift (BRF)",utilities:"Driftkostnader",maintenance:"Underhåll",insurance:"Hemförsäkring",other:"Övriga kostnader",
     investment:"ISK & analys",stockReturn:"Börsutveckling / år",
-    slrLabel:`Statslåneränta (SLR, aktuell: ${SLR_CURRENT}%)`,
-    slrNote:`Aktuell SLR: ${SLR_CURRENT}%. ISK-skatt = SLR + 1% (min 1,25%) av portföljvärdet per år – ingen skatt vid försäljning.`,
+    slrLabel:`Statslåneränta (SLR, nu: ${SLR_CURRENT}%)`,
+    slrNote:`Aktuell SLR: ${SLR_CURRENT}%. ISK-skatt = SLR+1% (min 1,25%) av portföljvärdet/år – ingen skatt vid försäljning.`,
     analysPeriod:"Analysperiod (år)",
     downpayment:"Kontantinsats",monthlyCostYr1:"Månadskostnad år 1",loanBalanceYr:"Lånesaldo år",portfolioYr:"ISK-portfölj år",
     diff:"Skillnad",scen15:"15% insats",scen10:"10% insats",
     verdict10pos:(yr,val)=>`10%-scenariot är ${val} bättre efter år ${yr} – börsen kompenserar mer än den extra skulden.`,
     verdict15pos:(yr,val)=>`15%-scenariot är ${val} bättre efter år ${yr} – räntekostnaden överstiger börsutvecklingen.`,
-    verdictNote:(ded,slr)=>`Ränteavdrag: ${ded}% · ISK-schablon: SLR ${slr}% + 1% = ${(+slr+1).toFixed(2)}% av portföljvärdet/år`,
-    noCross:"Linjerna korsas inte inom vald analysperiod – 15%-scenariot är bättre under hela perioden.",
+    verdictNote:(ded,slr)=>`Ränteavdrag: ${ded}% · ISK: SLR ${slr}% + 1% = ${(+slr+1).toFixed(2)}% av portföljvärdet/år`,
+    noCross:"Linjerna korsas inte inom vald period – 15%-scenariot är bättre under hela perioden.",
     crossPoint:"Break-even",
-    chartMonthlyTitle:"Månadskostnad över tid",
-    chartPortTitle:"Lönar sig 10%-scenariot?",
-    monthlyExplainer:"<strong>Vad visar denna graf?</strong> De två linjerna visar din totala månadskostnad (ränta + amortering + boendekostnader). <strong>Blå = 15% insats</strong>, <strong>orange = 10% insats</strong>. Orange startar högre men sjunker snabbare om amorteringen är högre.",
-    portExplainer:"<strong>Vad visar denna graf?</strong> De 5% du <em>inte</em> lade in som kontantinsats investeras istället på börsen. <strong>Grön = ISK-portfölj</strong>. <strong>Grå streckad = extra skuld</strong> du har i 10%-scenariot. När grön passerar grå är du vid <strong>break-even</strong> – och 10%-scenariot börjar löna sig. Lila = nettofördelen.",
-    portFooter:"Lila linje under noll = 15% är bättre. Lila linje över noll = 10% är bättre.",
+    chartMonthlyTitle:"Månadskostnad över tid",chartPortTitle:"Lönar sig 10%-scenariot?",
+    monthlyExplainer:"Visar total månadskostnad (ränta + amortering + boendekostnader). <strong>Blå = 15% insats</strong> (lägre lån, lägre månadskostnad från start). <strong>Orange = 10% insats</strong> (högre lån, högre kostnad i början).",
+    portExplainer:"De 5% som inte lades in som insats investeras på börsen (ISK). <strong>Grön = ISK-portföljens värde</strong>. <strong>Grå = den extra skulden</strong> du har i 10%-scenariot. När <strong>grön passerar grå</strong> är du vid break-even och 10%-scenariot börjar löna sig.",
+    portFooter:"Lila linje = nettofördelen (portfölj minus extra skuld). Lila över noll = 10% är bättre.",
     tableTitle:"Detaljerad tabell",tableNote:"Åren 1–10 visas varje år, därefter vart 5:e år.",
     colYear:"År",colM15:"Mån. 15%",colM10:"Mån. 10%",colL15:"Lån 15%",colL10:"Lån 10%",colISK:"ISK-portfölj",colNet:"Nettofördel 10%",
-    labelExtra:"Extra skuld (10% vs 15%)",labelNet:"Nettofördel 10%",labelISK:"ISK-portfölj",
+    labelExtra:"Extra skuld",labelNet:"Nettofördel 10%",labelISK:"ISK-portfölj",
     line15:"Månadskostnad 15%",line10:"Månadskostnad 10%",
     darkBtn:"☀️ Ljust",lightBtn:"🌙 Mörkt",yearLabel:"År",
-    crossLegend:"★ = Break-even (10%-scenariot börjar löna sig)",
-    crossInfo:(yr)=>`Break-even: år ${yr} – från detta år lönar sig 10%-scenariot (börsen har kompenserat den extra skulden).`,
+    crossLegend:"★ = Break-even (10%-scenariot börjar löna sig från detta år)",
+    crossInfo:(yr)=>`Break-even nås vid år ${yr} – från det året överstiger ISK-portföljens värde den extra skulden, och 10%-scenariot är fördelaktigare.`,
   },
   en:{
-    title:"Mortgage Calculator",subtitle:"Compare 10% vs 15% down payment",
-    inputSection:"Inputs",resultSection:"Results",
-    property:"Property & loan",propertyPrice:"Property price",amort15:"Amortization 15%-scen.",amort10:"Amortization 10%-scen.",
-    rateDeduction:"Interest tax deduction",rateDeductionNote:"Current rule: 30% deduction on interest costs up to 100 000/yr. Lower to simulate future rule changes.",
+    title:"Mortgage Calculator",subtitle:"Compare 10% vs 15% down payment",inputSection:"Inputs",resultSection:"Results",
+    property:"Property & loan",propertyPrice:"Property price",amort15:"Amortization 15%",amort10:"Amortization 10%",
+    rateDeduction:"Interest tax deduction",rateDeductionNote:"Current rule: 30% deduction on interest costs up to 100 000/yr.",
     rates:"Mortgage rate per period",ratesNote:"Rate for year N applies until the next specified year.",
-    housingCosts:"Housing costs / month",
-    brf:"HOA fee",utilities:"Utilities",maintenance:"Maintenance",insurance:"Home insurance",other:"Other costs",
+    ratesEarly:"Years 1–5",ratesLate:"Years 10–50 (every 5 years)",
+    housingCosts:"Housing costs / month",brf:"HOA fee",utilities:"Utilities",maintenance:"Maintenance",insurance:"Home insurance",other:"Other costs",
     investment:"ISK & analysis",stockReturn:"Stock market return / yr",
     slrLabel:`Gov. bond rate (SLR, current: ${SLR_CURRENT}%)`,
-    slrNote:`Current SLR: ${SLR_CURRENT}%. ISK tax = SLR + 1% (min 1.25%) of portfolio value per year – no tax on withdrawal.`,
+    slrNote:`Current SLR: ${SLR_CURRENT}%. ISK tax = SLR+1% (min 1.25%) of portfolio value/yr – no tax on withdrawal.`,
     analysPeriod:"Analysis period (years)",
     downpayment:"Down payment",monthlyCostYr1:"Monthly cost year 1",loanBalanceYr:"Loan balance yr",portfolioYr:"ISK portfolio yr",
     diff:"Difference",scen15:"15% down",scen10:"10% down",
     verdict10pos:(yr,val)=>`10% scenario is ${val} better after year ${yr} – stock returns outweigh the extra debt.`,
     verdict15pos:(yr,val)=>`15% scenario is ${val} better after year ${yr} – interest costs exceed stock returns.`,
-    verdictNote:(ded,slr)=>`Interest deduction: ${ded}% · ISK rate: SLR ${slr}% + 1% = ${(+slr+1).toFixed(2)}% of portfolio/yr`,
+    verdictNote:(ded,slr)=>`Interest deduction: ${ded}% · ISK: SLR ${slr}% + 1% = ${(+slr+1).toFixed(2)}% of portfolio/yr`,
     noCross:"Lines do not cross within the selected period – 15% scenario is better throughout.",
     crossPoint:"Break-even",
-    chartMonthlyTitle:"Monthly cost over time",
-    chartPortTitle:"Does the 10% scenario pay off?",
-    monthlyExplainer:"<strong>What does this chart show?</strong> The two lines show your total monthly cost (interest + amortization + housing costs). <strong>Blue = 15% down</strong>, <strong>orange = 10% down</strong>. Orange starts higher but drops faster with higher amortization.",
-    portExplainer:"<strong>What does this chart show?</strong> The 5% not put in as a down payment is instead invested in an ISK account. <strong>Green = ISK portfolio value</strong>. <strong>Grey dashed = extra debt</strong> in the 10% scenario. When green passes grey you reach <strong>break-even</strong> – the 10% scenario starts paying off. Purple = net benefit.",
-    portFooter:"Purple below zero = 15% is better. Purple above zero = 10% is better.",
+    chartMonthlyTitle:"Monthly cost over time",chartPortTitle:"Does the 10% scenario pay off?",
+    monthlyExplainer:"Shows total monthly cost (interest + amortization + housing costs). <strong>Blue = 15% down</strong> (smaller loan, lower cost from the start). <strong>Orange = 10% down</strong> (larger loan, higher cost initially).",
+    portExplainer:"The 5% not put in as a down payment is invested in an ISK account instead. <strong>Green = ISK portfolio value</strong>. <strong>Grey = the extra debt</strong> in the 10% scenario. When <strong>green passes grey</strong> you reach break-even and the 10% scenario starts paying off.",
+    portFooter:"Purple line = net benefit (portfolio minus extra debt). Purple above zero = 10% is better.",
     tableTitle:"Detailed table",tableNote:"Years 1–10 shown annually, then every 5 years.",
     colYear:"Year",colM15:"Mo. 15%",colM10:"Mo. 10%",colL15:"Loan 15%",colL10:"Loan 10%",colISK:"ISK portfolio",colNet:"Net benefit 10%",
-    labelExtra:"Extra debt (10% vs 15%)",labelNet:"Net benefit 10%",labelISK:"ISK portfolio",
+    labelExtra:"Extra debt",labelNet:"Net benefit 10%",labelISK:"ISK portfolio",
     line15:"Monthly cost 15%",line10:"Monthly cost 10%",
     darkBtn:"☀️ Light",lightBtn:"🌙 Dark",yearLabel:"Year",
-    crossLegend:"★ = Break-even (10% scenario starts paying off)",
-    crossInfo:(yr)=>`Break-even: year ${yr} – from this year the 10% scenario pays off (stock returns have offset the extra debt).`,
+    crossLegend:"★ = Break-even (10% scenario starts paying off from this year)",
+    crossInfo:(yr)=>`Break-even reached at year ${yr} – from that year the ISK portfolio exceeds the extra debt and the 10% scenario is more advantageous.`,
   }
 };
 
@@ -346,23 +337,14 @@ function fmtN(n){return Math.round(n).toLocaleString(CURRENCIES[currency].locale
 function fmtC(n){const c=CURRENCIES[currency];return c.pos==="before"?`${c.symbol}${fmtN(n)}`:`${fmtN(n)} ${c.symbol}`}
 function fmtAxis(v){const a=Math.abs(v),s=v<0?"-":"";if(a>=1e6)return s+(a/1e6).toFixed(1)+"M";if(a>=1e3)return s+(a/1e3).toFixed(0)+"k";return s+a}
 function getVal(id){return parseFloat(document.getElementById(id).value)||0}
+function syncSlider(id,sfx){document.getElementById(id+"-val").textContent=document.getElementById(id).value+sfx}
 
-function fmtInput(el){
-  // Just trigger update; display handled by browser for number inputs
-  update();
-}
-
-function getRates(){const r={};arKeys.forEach(k=>{r[k]=getVal("rate_"+k)});return r}
+function getRates(){const r={};arKeys.forEach(k=>{const el=document.getElementById("rate_"+k);r[k]=el?parseFloat(el.value)||0:3.5});return r}
 function getRanta(y,rates){
   const keys=arKeys.filter(k=>k<=y);
   return(rates[keys.length?keys[keys.length-1]:1]||0)/100
 }
-function tableYears(){
-  const y=[];
-  for(let i=1;i<=10;i++)y.push(i);
-  for(let i=15;i<=50;i+=5)y.push(i);
-  return y
-}
+function tableYears(){const y=[];for(let i=1;i<=10;i++)y.push(i);for(let i=15;i<=50;i+=5)y.push(i);return y}
 
 function calcData(){
   const pris=getVal("pris"),rates=getRates();
@@ -380,10 +362,9 @@ function calcData(){
     const amB15=lan15*am15,amB10=lan10*am10;
     const m15=(lan15*r*avdrag+amB15)/12+boKost;
     const m10=(lan10*r*avdrag+amB10)/12+boKost;
-    const iskSkatt=portfolj*iskRate;
-    portfolj=portfolj*(1+bors)-iskSkatt;
+    portfolj=portfolj*(1+bors)-portfolj*iskRate;
     lan15-=amB15;lan10-=amB10;
-    const extraSkuld=lan10-lan15,nettoFordel=portfolj-extraSkuld;
+    const extraSkuld=Math.max(0,lan10-lan15),nettoFordel=portfolj-extraSkuld;
     if(crossYear===null&&prevNet!==null&&((prevNet<=0&&nettoFordel>0)||(prevNet>=0&&nettoFordel<0)))crossYear=y;
     prevNet=nettoFordel;
     allData.push({y,lan15:Math.round(lan15),lan10:Math.round(lan10),portfolj:Math.round(portfolj),manad15:Math.round(m15),manad10:Math.round(m10),nettoFordel:Math.round(nettoFordel),extraSkuld:Math.round(extraSkuld)});
@@ -391,23 +372,38 @@ function calcData(){
   return{allData,ki15,ki10,skillnad,iskRate,crossYear}
 }
 
-function syncSlider(id,suffix){document.getElementById(id+"-val").textContent=document.getElementById(id).value+suffix}
-
 function buildRateFields(){
   const t=LANGS[lang];
   const c=document.getElementById("rate-fields");
   c.innerHTML="";
-  arKeys.forEach(k=>{
-    const d=document.createElement("div");
-    d.className="field";
-    d.innerHTML=`<label>${t.yearLabel} ${k}</label><div class="field-with-unit"><input type="number" id="rate_${k}" value="3.5" step="0.25" min="0" max="20" oninput="update()"/><span class="field-unit">%</span></div>`;
-    c.appendChild(d);
+
+  // Group: years 1-5
+  const g1=document.createElement("div");
+  g1.innerHTML=`<span class="rate-group-label">${t.ratesEarly}</span>`;
+  const row1=document.createElement("div");
+  row1.className="rate-row";
+  arKeysEarly.forEach(k=>{
+    const cell=document.createElement("div");cell.className="rate-cell";
+    cell.innerHTML=`<label>${t.yearLabel} ${k}</label><div class="field-with-unit"><input type="number" id="rate_${k}" value="3.5" step="0.25" min="0" max="20" oninput="update()"/><span class="field-unit">%</span></div>`;
+    row1.appendChild(cell);
   });
+  g1.appendChild(row1);c.appendChild(g1);
+
+  // Group: years 10-50
+  const g2=document.createElement("div");
+  g2.innerHTML=`<span class="rate-group-label" style="margin-top:8px;display:block">${t.ratesLate}</span>`;
+  const row2=document.createElement("div");
+  row2.className="rate-row";
+  arKeysLate.forEach(k=>{
+    const cell=document.createElement("div");cell.className="rate-cell";
+    cell.innerHTML=`<label>${t.yearLabel} ${k}</label><div class="field-with-unit"><input type="number" id="rate_${k}" value="3.5" step="0.25" min="0" max="20" oninput="update()"/><span class="field-unit">%</span></div>`;
+    row2.appendChild(cell);
+  });
+  g2.appendChild(row2);c.appendChild(g2);
 }
 
 function buildHousingFields(){
-  const t=LANGS[lang];
-  const tips=HOUSING_TIPS[lang];
+  const t=LANGS[lang];const tips=HOUSING_TIPS[lang];
   const fields=[
     {id:"avgift",label:t.brf,val:4500,tip:tips.avgift},
     {id:"drift",label:t.utilities,val:2000,tip:tips.drift},
@@ -415,27 +411,21 @@ function buildHousingFields(){
     {id:"forsakring",label:t.insurance,val:300,tip:tips.forsakring},
     {id:"ovrig",label:t.other,val:0,tip:tips.ovrig},
   ];
-  const c=document.getElementById("housing-fields");
-  c.innerHTML=`<div class="grid-fields">${fields.map(f=>`
+  document.getElementById("housing-fields").innerHTML=fields.map(f=>`
     <div class="field">
       <div class="field-row">
         <label>${f.label}</label>
-        <div class="tooltip-wrap">
-          <span class="help-icon" tabindex="0">?</span>
-          <div class="tip">${f.tip}</div>
-        </div>
+        <div class="tooltip-wrap"><span class="help-icon" tabindex="0">?</span><div class="tip">${f.tip}</div></div>
       </div>
       <input type="number" id="${f.id}" value="${f.val}" step="100" oninput="update()"/>
-    </div>`).join("")}</div>`;
+    </div>`).join("");
 }
 
 function buildPeriodBtns(){
-  const c=document.getElementById("period-btns");
-  c.innerHTML="";
+  const c=document.getElementById("period-btns");c.innerHTML="";
   analysOptions.forEach(y=>{
     const b=document.createElement("button");
-    b.textContent=y;b.id="period_"+y;
-    if(y===analysAr)b.classList.add("active");
+    b.textContent=y;if(y===analysAr)b.classList.add("active");
     b.onclick=()=>{analysAr=y;buildPeriodBtns();update()};
     c.appendChild(b);
   });
@@ -443,16 +433,14 @@ function buildPeriodBtns(){
 
 function buildResultBlocks(allData,ki15,ki10,skillnad){
   const t=LANGS[lang];
-  const d0=allData[0]||{};
-  const s=allData[analysAr-1]||allData[allData.length-1];
+  const d0=allData[0]||{},s=allData[analysAr-1]||allData[allData.length-1];
   const blocks=[
     {label:t.downpayment,v15:fmtC(ki15),v10:fmtC(ki10),diff:"−"+fmtC(skillnad),dc:"var(--green)"},
     {label:t.monthlyCostYr1,v15:fmtC(d0.manad15||0),v10:fmtC(d0.manad10||0),diff:((d0.manad10-d0.manad15>=0)?"+":"")+fmtC((d0.manad10||0)-(d0.manad15||0)),dc:d0.manad10>d0.manad15?"var(--red)":"var(--green)"},
     {label:`${t.loanBalanceYr} ${analysAr}`,v15:fmtC(s.lan15||0),v10:fmtC(s.lan10||0),diff:"+"+fmtC(s.extraSkuld||0),dc:"var(--red)"},
     {label:`${t.portfolioYr} ${analysAr}`,v15:"–",v10:fmtC(s.portfolj||0),diff:null},
   ];
-  const c=document.getElementById("result-blocks");
-  c.innerHTML="";
+  const c=document.getElementById("result-blocks");c.innerHTML="";
   blocks.forEach(b=>{
     const cols=b.diff?"1fr 1fr 1fr":"1fr 1fr";
     let cells=`<div class="rb-cell"><p class="rb-lbl">${t.scen15}</p><p class="rb-val">${b.v15}</p></div><div class="rb-cell"><p class="rb-lbl">${t.scen10}</p><p class="rb-val">${b.v10}</p></div>`;
@@ -465,18 +453,17 @@ function buildVerdict(allData,crossYear){
   const t=LANGS[lang];
   const s=allData[analysAr-1]||allData[allData.length-1];
   const pos=s.nettoFordel>0;
-  const slrV=document.getElementById("slr").value;
-  const dedV=document.getElementById("ranteavdrag").value;
   const box=document.getElementById("verdict-box");
   box.style.background=pos?(darkMode?"#0c2218":"#e8f8f2"):(darkMode?"#281208":"#fdf0eb");
   box.style.border=`0.5px solid ${pos?(darkMode?"#174d30":"#a8dfc8"):(darkMode?"#5e1e08":"#f0b090")}`;
   document.getElementById("verdict-text").style.color=pos?"var(--green)":"var(--red)";
-  document.getElementById("verdict-text").textContent=pos?t.verdict10pos(analysAr,fmtC(s.nettoFordel)):t.verdict15pos(analysAr,fmtC(Math.abs(s.nettoFordel)));
-  document.getElementById("verdict-note").textContent=t.verdictNote(dedV,slrV);
+  document.getElementById("verdict-text").textContent=pos
+    ?t.verdict10pos(analysAr,fmtC(s.nettoFordel))
+    :t.verdict15pos(analysAr,fmtC(Math.abs(s.nettoFordel)));
+  document.getElementById("verdict-note").textContent=t.verdictNote(getVal("ranteavdrag"),document.getElementById("slr").value);
   document.getElementById("result-bar").style.background=pos?"var(--green)":"var(--red)";
   document.getElementById("ui-resultSection").textContent=`${t.resultSection} – ${t.yearLabel.toLowerCase()} ${analysAr}`;
-  const crossTxt=document.getElementById("cross-note");
-  crossTxt.textContent=(crossYear&&crossYear<=50)?t.crossInfo(crossYear):t.noCross;
+  document.getElementById("cross-note").textContent=(crossYear&&crossYear<=50)?t.crossInfo(crossYear):t.noCross;
   document.getElementById("cross-legend").textContent=crossYear?t.crossLegend:"";
 }
 
@@ -488,35 +475,87 @@ function buildTable(allData,crossYear){
     const r=allData[y-1];if(!r)return;
     const isMile=y===crossYear;
     const tr=document.createElement("tr");
-    if(isMile)tr.className="milestone";
-    else if(i%2)tr.className="stripe";
+    if(isMile)tr.className="milestone";else if(i%2)tr.className="stripe";
     tr.innerHTML=`<td class="yr">${y}${isMile?` <span class="be-badge">${t.crossPoint}</span>`:""}</td><td>${fmtN(r.manad15)}</td><td>${fmtN(r.manad10)}</td><td>${fmtN(r.lan15)}</td><td>${fmtN(r.lan10)}</td><td>${fmtN(r.portfolj)}</td><td class="${r.nettoFordel>0?"net-pos":"net-neg"}">${fmtN(r.nettoFordel)}</td>`;
     body.appendChild(tr);
   });
 }
 
-function makeLegend(containerId,items){
-  const c=document.getElementById(containerId);c.innerHTML="";
+function makeLegend(id,items){
+  const c=document.getElementById(id);c.innerHTML="";
   items.forEach(item=>{
-    const d=document.createElement("div");d.className="legend-item";
-    const dot=document.createElement("div");dot.className=`legend-dot${item.dashed?" dashed":""}`;
-    dot.style.background=item.color;dot.style.color=item.color;
-    d.appendChild(dot);
-    const s=document.createElement("span");s.textContent=item.label;
-    d.appendChild(s);c.appendChild(d);
+    const wrap=document.createElement("div");wrap.className="legend-item";
+    const line=document.createElement("div");line.className="legend-line";
+    line.style.background=item.color;
+    if(item.dashed)line.style.background=`repeating-linear-gradient(90deg,${item.color} 0,${item.color} 5px,transparent 5px,transparent 9px)`;
+    wrap.appendChild(line);
+    const lbl=document.createElement("span");lbl.textContent=item.label;
+    wrap.appendChild(lbl);c.appendChild(wrap);
   });
 }
+
+function drawBreakEvenLine(chart,crossYear,labels){
+  if(!crossYear||crossYear>analysAr)return;
+  const idx=labels.indexOf(crossYear);
+  if(idx<0)return;
+  const meta=chart.getDatasetMeta(0);
+  if(!meta.data[idx])return;
+  const x=meta.data[idx].x;
+  const {top,bottom}=chart.chartArea;
+  const ctx=chart.ctx;
+  ctx.save();
+  ctx.beginPath();
+  ctx.setLineDash([5,4]);
+  ctx.strokeStyle="rgba(157,151,232,0.7)";
+  ctx.lineWidth=1.5;
+  ctx.moveTo(x,top);ctx.lineTo(x,bottom);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle="rgba(157,151,232,0.15)";
+  ctx.fillRect(x-1,top,2,bottom-top);
+  ctx.font="11px -apple-system,sans-serif";
+  ctx.fillStyle="#9d97e8";
+  ctx.textAlign="center";
+  ctx.fillText(LANGS[lang].crossPoint,x,top-4);
+  ctx.restore();
+}
+
+const breakEvenPlugin={
+  id:"breakEven",
+  afterDraw(chart){
+    if(chart.canvas.id==="chartPort"&&window._crossYear){
+      drawBreakEvenLine(chart,window._crossYear,window._chartLabels);
+    }
+  }
+};
+Chart.register(breakEvenPlugin);
 
 function buildCharts(allData,crossYear){
   const t=LANGS[lang];
   const cd=allData.slice(0,analysAr);
   const labels=cd.map(d=>d.y);
+  window._crossYear=crossYear;
+  window._chartLabels=labels;
   const gridC=darkMode?"rgba(255,255,255,0.06)":"rgba(0,0,0,0.07)";
   const tickC=darkMode?"#888":"#888";
-  const zerC=darkMode?"rgba(255,255,255,0.15)":"rgba(0,0,0,0.15)";
   const ttBg=darkMode?"#252525":"#fff";
   const ttBd=darkMode?"#444":"#ddd";
   const ttTxt=darkMode?"#e8e8e8":"#1a1a1a";
+
+  document.getElementById("monthly-explainer").innerHTML=t.monthlyExplainer;
+  document.getElementById("port-explainer").innerHTML=t.portExplainer;
+  document.getElementById("port-footer").textContent=t.portFooter;
+
+  makeLegend("monthly-legend",[
+    {color:"#4a85d4",label:t.line15},
+    {color:"#D85A30",label:t.line10},
+  ]);
+  makeLegend("port-legend",[
+    {color:"#1D9E75",label:t.labelISK},
+    {color:"#666",label:t.labelExtra,dashed:true},
+    {color:"#9d97e8",label:t.labelNet,dashed:true},
+  ]);
+
   const baseOpts={
     responsive:true,maintainAspectRatio:false,
     plugins:{
@@ -525,52 +564,29 @@ function buildCharts(allData,crossYear){
         callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmtC(ctx.raw)}`}}
     },
     scales:{
-      x:{ticks:{color:tickC,font:{size:11}},grid:{color:gridC}},
+      x:{ticks:{color:tickC,font:{size:11},maxTicksLimit:10},grid:{color:gridC}},
       y:{ticks:{color:tickC,font:{size:11},callback:fmtAxis},grid:{color:gridC}}
-    }
+    },
+    animation:{duration:300}
   };
 
-  makeLegend("monthly-legend",[
-    {color:"#4a85d4",label:t.line15},
-    {color:"#D85A30",label:t.line10},
-  ]);
-
-  if(chartMonthly)chartMonthly.destroy();
+  if(chartMonthly){chartMonthly.destroy();chartMonthly=null}
   chartMonthly=new Chart(document.getElementById("chartMonthly"),{
     type:"line",
     data:{labels,datasets:[
-      {label:t.line15,data:cd.map(d=>d.manad15),borderColor:"#4a85d4",borderWidth:2,pointRadius:0,tension:.3,fill:false},
-      {label:t.line10,data:cd.map(d=>d.manad10),borderColor:"#D85A30",borderWidth:2,pointRadius:0,tension:.3,fill:false},
+      {label:t.line15,data:cd.map(d=>d.manad15),borderColor:"#4a85d4",borderWidth:2,pointRadius:0,tension:.3},
+      {label:t.line10,data:cd.map(d=>d.manad10),borderColor:"#D85A30",borderWidth:2,pointRadius:0,tension:.3},
     ]},
-    options:{...baseOpts}
+    options:baseOpts
   });
 
-  makeLegend("port-legend",[
-    {color:"#1D9E75",label:t.labelISK},
-    {color:"#777",label:t.labelExtra,dashed:true},
-    {color:"#9d97e8",label:t.labelNet,dashed:true},
-  ]);
-
-  document.getElementById("monthly-explainer").innerHTML=t.monthlyExplainer;
-  document.getElementById("port-explainer").innerHTML=t.portExplainer;
-  document.getElementById("port-footer").textContent=t.portFooter;
-
-  const annotations=[];
-  if(crossYear&&crossYear<=analysAr){
-    annotations.push({
-      type:"line",xMin:crossYear-1,xMax:crossYear-1,
-      borderColor:"#9d97e8",borderWidth:1.5,borderDash:[4,3],
-      label:{content:t.crossPoint,display:true,backgroundColor:"rgba(157,151,232,0.15)",color:"#9d97e8",font:{size:11},padding:{x:6,y:3},position:"start"}
-    });
-  }
-
-  if(chartPort)chartPort.destroy();
+  if(chartPort){chartPort.destroy();chartPort=null}
   chartPort=new Chart(document.getElementById("chartPort"),{
     type:"line",
     data:{labels,datasets:[
-      {label:t.labelISK,data:cd.map(d=>d.portfolj),borderColor:"#1D9E75",borderWidth:2.5,pointRadius:0,tension:.3,fill:false},
-      {label:t.labelExtra,data:cd.map(d=>d.extraSkuld),borderColor:"#777",borderWidth:1.5,borderDash:[5,4],pointRadius:0,tension:.3,fill:false},
-      {label:t.labelNet,data:cd.map(d=>d.nettoFordel),borderColor:"#9d97e8",borderWidth:2,borderDash:[3,3],pointRadius:0,tension:.3,fill:false},
+      {label:t.labelISK,data:cd.map(d=>d.portfolj),borderColor:"#1D9E75",borderWidth:2.5,pointRadius:0,tension:.3},
+      {label:t.labelExtra,data:cd.map(d=>d.extraSkuld),borderColor:"#666",borderWidth:1.5,borderDash:[5,4],pointRadius:0,tension:.3},
+      {label:t.labelNet,data:cd.map(d=>d.nettoFordel),borderColor:"#9d97e8",borderWidth:2,borderDash:[3,3],pointRadius:0,tension:.3},
     ]},
     options:{
       ...baseOpts,
@@ -585,16 +601,16 @@ function buildCharts(allData,crossYear){
               const skuld=items.find(i=>i.datasetIndex===1)?.raw;
               if(isk==null||skuld==null)return[];
               return["",isk>skuld
-                ?(lang==="sv"?"✓ Portföljen > skulden – 10% lönar sig":"✓ Portfolio > debt – 10% pays off")
-                :(lang==="sv"?"✗ Skulden > portföljen – 15% är bättre":"✗ Debt > portfolio – 15% is better")];
+                ?(lang==="sv"?"✓ Börsen kompenserar – 10% lönar sig":"✓ Stock returns compensate – 10% pays off")
+                :(lang==="sv"?"✗ Skulden överstiger portföljen – 15% är bättre":"✗ Debt exceeds portfolio – 15% is better")];
             }
           }
-        },
-        annotation:{annotations}
+        }
       },
       scales:{
         ...baseOpts.scales,
-        y:{...baseOpts.scales.y,grid:{...baseOpts.scales.y.grid,color:(ctx)=>ctx.tick.value===0?zerC:gridC}}
+        y:{...baseOpts.scales.y,
+          grid:{color:(ctx)=>ctx.tick.value===0?(darkMode?"rgba(255,255,255,0.2)":"rgba(0,0,0,0.2)"):gridC}}
       }
     }
   });
@@ -602,13 +618,20 @@ function buildCharts(allData,crossYear){
 
 function updateTexts(){
   const t=LANGS[lang];
-  ["title","subtitle","inputSection","property","amort15","amort10","rateDeduction","rateDeductionNote","rates","ratesNote","housingCosts","investment","stockReturn","analysPeriod","chartMonthlyTitle","chartPortTitle","tableTitle","tableNote"].forEach(k=>{
-    const el=document.getElementById("ui-"+k);if(el)el.textContent=t[k]||"";
-  });
+  const ids=["title","subtitle","inputSection","property","amort15","amort10","rateDeduction","rateDeductionNote","rates","ratesNote","housingCosts","investment","stockReturn","analysPeriod","chartMonthlyTitle","chartPortTitle","tableTitle","tableNote"];
+  ids.forEach(k=>{const el=document.getElementById("ui-"+k);if(el)el.textContent=t[k]||""});
   document.getElementById("ui-propertyPrice").textContent=`${t.propertyPrice} (${currency})`;
   document.getElementById("ui-slrLabel").textContent=t.slrLabel;
   document.getElementById("ui-slrNote").textContent=t.slrNote;
   document.getElementById("dark-btn").textContent=darkMode?t.darkBtn:t.lightBtn;
+}
+
+function update(){
+  const {allData,ki15,ki10,skillnad,crossYear}=calcData();
+  buildResultBlocks(allData,ki15,ki10,skillnad);
+  buildVerdict(allData,crossYear);
+  buildTable(allData,crossYear);
+  buildCharts(allData,crossYear);
 }
 
 function setLang(v){lang=v;updateTexts();buildRateFields();buildHousingFields();buildPeriodBtns();update()}
@@ -620,7 +643,6 @@ function toggleDark(){
   update();
 }
 
-// Init – dark mode on by default
 buildRateFields();
 buildHousingFields();
 buildPeriodBtns();
